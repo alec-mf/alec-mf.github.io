@@ -1,0 +1,72 @@
+/* Document */
+
+body {
+    font-family: "Akzidenz-Grotesk", "Arial", sans-serif;
+    line-height:68px;
+    font-size:68px;
+	-webkit-font-smoothing: subpixel-antialiased;
+	color: #000;
+    text-align: center;
+    background-color: white;
+}
+
+.click {
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    width:100%;
+    height:100%;
+}
+
+a:link,
+#download-button,
+#video-button {	
+	color: #000; 
+	text-decoration: none; 
+    
+}
+
+a:visited {
+	color: #000; 
+	text-decoration: none; 
+}
+
+canvas:focus {
+	outline: none;
+}
+	
+a:active,
+#download-button:active { 
+	color: #000; 
+	text-decoration: none; 	
+}
+
+.top {
+    position:relative;
+    white-space: nowrap;
+    overflow: scroll;
+    top:6%;
+    left:50%;
+    transform: translateX(-50%);
+}
+
+.middle {
+    position:absolute;
+    white-space: nowrap;
+    overflow: scroll;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+}
+
+.bottom {
+    position:absolute;
+    white-space: nowrap;
+    overflow: scroll;
+    bottom:6%;
+    left:50%;
+    transform: translateX(-50%);
+}
+

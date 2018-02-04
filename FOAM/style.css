@@ -1,0 +1,134 @@
+<style type="text/css">
+	
+		::-moz-selection { /* Code for Firefox */
+	    background:#F5ECCA;
+	}
+
+	::selection {
+	    background: #F5ECCA;
+	}
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+:: -moz-scrollbar { 
+    display: none; 
+}
+
+@font-face {
+    font-family: 'Favorit';
+    src: url('favorit_regular-webfont.woff2') format('woff2'),
+         url('favorit_regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+		body {
+			padding:25px;
+			overflow:hidden;
+        	margin:0;
+			background:#FFFFFF;		
+		}
+	
+		#text {
+			font-family: 'Favorit', Helvetica, Arial, 'serif';
+			font-size: 75px;
+			letter-spacing: 2px;
+			line-height: 85px;
+			height:95%;
+			width:75%;
+		   	top: 50%;
+    		left: 50%;
+    		transform: translateX(-50%) translateY(-50%);
+			position:absolute;
+			overflow-y:scroll;
+			padding:10px;
+			hyphens: auto;
+			-webkit-hyphens: auto;
+    		-moz-hyphens: auto;
+			z-index: -1;
+			-webkit-user-select: none;  /* Chrome all / Safari all */
+ 			-moz-user-select: none;     /* Firefox all */
+  			-ms-user-select: none;      /* IE 10+ */
+  			user-select: none;
+			cursor:crosshair;
+		}
+		
+.draggable {
+	visibility:hidden;
+	overflow:hidden;
+	position:absolute;
+	cursor:move;
+	z-index: 1;
+	display: inline;
+}
+
+.draggable:active {z-index:2;}
+
+.popuplink {cursor: pointer;
+	pointer-events:all;
+border-radius: 100%;
+	box-shadow: 0 0 0 5px #F5ECCA;
+-webkit-box-shadow: 0 0 0 5px #F5ECCA;
+	-moz-box-shadow: 0 0 0 5px #F5ECCA;
+-moz-transition: all 1s;
+   -o-transition: all 1s;
+   -webkit-transition: all 1s;
+   transition: all 1s;
+}
+
+.popuplink:hover { border-radius: 35%;
+	
+}
+
+.popuplink:active { border-radius: 0%; 
+	-moz-transition: all .2s;
+   -o-transition: all .2s;
+   -webkit-transition: all .2s;
+   transition: all .2s;
+	
+}
+
+
+.citation {color:black;
+	font-family: 'Times', 'Times new roman', serif;
+	font-size: 79px;
+	font-weight:normal;
+	letter-spacing: 1px;
+	}
+
+.quote {color:#BBCDEB;}
+
+.heading {color:black;
+	font-family: 'Times', 'Times new roman', serif;
+	font-weight:normal;
+	letter-spacing: 1px;
+	font-size: 21px;
+	}
+		
+
+		a {
+			
+			color:black;
+			text-decoration: underline;
+			
+		}
+		
+			a:hover {
+				color:black;
+				text-decoration: none;
+			
+			}
+			
+			a:active,
+			a:focus {
+				outline: 0;
+			}
+			
+			a img { border-width: 0px; }
+		
+	</style>/* CSS Document */
+
