@@ -36,7 +36,7 @@ a:visited {
 a:hover,
 #download-button:hover,
 #video-button:hover {
-  text-decoration:underline;
+  text-decoration:overline;
 	color: #000; 
    
 }
