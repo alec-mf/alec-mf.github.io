@@ -1,7 +1,10 @@
 @charset "UTF-8";
 /* CSS Document */
 
-	
+	* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 		::-moz-selection { /* Code for Firefox */
 
