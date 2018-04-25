@@ -151,7 +151,6 @@
         top:75px;
 display: inline-block;
         position:relative;
-overflow-x: scroll;
   
 
         z-index:0;
@@ -168,7 +167,6 @@ overflow-x: scroll;
 
     width:92%;
 				
-				overflow-x: scroll;
 
   
 
@@ -334,7 +332,6 @@ overflow-x: scroll;
 
 			margin-left:4%;
 			display: inline-block;
-			overflow-x: show;
 			
 
 			}
