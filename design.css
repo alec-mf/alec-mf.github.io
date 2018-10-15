@@ -427,6 +427,49 @@ display: inline-block;
 
 			}
 
+/* Modal */
+
+.myImg {
+    cursor: pointer;
+}
+
+.myImg:active {
+    cursor: grabbing;
+}
+
+/* Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 4; /* Sit on top */
+	left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 75vw;
+	max-height: 75vh;
+    overflow: scroll; /* Enable scroll if needed */
+	cursor: pointer;
+}
+
+/* Modal Content (Image) */
+.modal-content {
+    margin: auto 0;
+}
+
+
+.slide {
+  position: relative;
+}
+
+.indicator {opacity: 0;
+	font-size:4vh;
+	position:fixed;
+	line-height: 0;
+	bottom:0px;
+	background-color: var(--background-color);
+	width:100vw;
+	z-index:3;}
+
 
 		.tmblr-iframe--controls {display:none;}
 
