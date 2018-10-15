@@ -433,10 +433,6 @@ display: inline-block;
     cursor: pointer;
 }
 
-.mImg:active {
-    cursor: grabbing;
-}
-
 /* Modal (background) */
 .modal {
     display: none; /* Hidden by default */
