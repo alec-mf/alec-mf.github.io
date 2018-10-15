@@ -274,11 +274,9 @@ var captionText = document.getElementById("caption");
 
 
 $('.mImg') .bind('mouseup', function(){
-	 if(dragCheck == false){
     modal.style.display = "block";
     var newSrc = this.src;
     modalImg.attr('src', newSrc);
-}
 });
 
 modal.onclick = function() {
