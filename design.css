@@ -441,9 +441,9 @@ display: inline-block;
 	left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 75vw;
+    max-width: 75vw;
 	max-height: 75vh;
-    overflow: scroll; /* Enable scroll if needed */
+    overflow: hidden;
 	cursor: pointer;
 }
 
