@@ -429,11 +429,11 @@ display: inline-block;
 
 /* Modal */
 
-.myImg {
+.mImg {
     cursor: pointer;
 }
 
-.myImg:active {
+.mImg:active {
     cursor: grabbing;
 }
 
@@ -457,18 +457,6 @@ display: inline-block;
 }
 
 
-.slide {
-  position: relative;
-}
-
-.indicator {opacity: 0;
-	font-size:4vh;
-	position:fixed;
-	line-height: 0;
-	bottom:0px;
-	background-color: var(--background-color);
-	width:100vw;
-	z-index:3;}
 
 
 		.tmblr-iframe--controls {display:none;}
