@@ -255,11 +255,33 @@
 
 
 
+<div id="myModal" class="modal">
+  <img class="modal-content" id="img01">
+</div>
 
 
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = $('.mImg');
+var modalImg = $("#img01");
+var captionText = document.getElementById("caption");
 
 
+$('.mImg') .bind('mouseup', function(){
+	 if(dragCheck == false){
+    modal.style.display = "block";
+    var newSrc = this.src;
+    modalImg.attr('src', newSrc);
+}
+});
 
+modal.onclick = function() {
+  modal.style.display = "none";
+}
+		</script>
         
         </body>
 
