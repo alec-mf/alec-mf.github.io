@@ -450,6 +450,7 @@ display: inline-block;
 /* Modal Content (Image) */
 .modal-content {
     margin: auto;
+	max-height: 100%; 
 }
 
 
