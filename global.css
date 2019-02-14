@@ -1,7 +1,7 @@
 /* Document */
 
 body {
-    font-family: "Akzidenz-Grotesk", "Arial", sans-serif;
+    font-family: sans-serif;
     line-height:25px;
 	-webkit-font-smoothing: subpixel-antialiased;
 	text-align: left;
@@ -22,33 +22,33 @@ table {
 /* links */
 a:link,
 #download-button,
-#video-button {	
-	color: #000; 
-	text-decoration: none; 
-    
+#video-button {
+	color: #000;
+	text-decoration: none;
+
 }
 
 a:visited {
-	color: #000; 
-	text-decoration: none; 
+	color: #000;
+	text-decoration: none;
 }
 
 a:hover,
 #download-button:hover,
 #video-button:hover {
   text-decoration:underline;
-	color: #000; 
-   
+	color: #000;
+
 }
 
 canvas:focus {
 	outline: none;
 }
-	
+
 a:active,
-#download-button:active { 
-	color: #000; 
-	text-decoration: none; 	
+#download-button:active {
+	color: #000;
+	text-decoration: none;
 }
 
 #download-button,
@@ -62,15 +62,15 @@ a:active,
 }
 
 a.tooltip span {
-	display:none; 
-	padding:2px 3px; 
-	margin-left:8px; 
+	display:none;
+	padding:2px 3px;
+	margin-left:8px;
 	width:300px;
 }
 
 a.tooltip:hover span{
-	display:inline; 
-	position:absolute; 
+	display:inline;
+	position:absolute;
 	/* background:transparent; */
 	background:#FFF;
 	border:1px solid #CCC;
@@ -99,7 +99,7 @@ iframe {
     width:calc(45% + 320px);
 
 }
-    
+
 .blurbContainer {
     top:94px;
     position:relative;
@@ -116,7 +116,7 @@ iframe {
     float:left;
 	width: 15%;
     height: 400px;
-    
+
 }
 
 .detail {
@@ -134,8 +134,8 @@ iframe {
     width: 95%;
 	z-index: 50;
     float:left;
-}	
-	
+}
+
 .dividerContainer {
     display:block;
 	float: left;
@@ -149,10 +149,10 @@ iframe {
     height: 108px;
     margin-bottom:108px;
 }
-	
+
 .thumbsContainer {
 }
-	
+
 .thumb {
     float: left;
 }
@@ -160,11 +160,11 @@ iframe {
 .captionContainer {
 	width: 100%;
 	padding: 5px 0 0 0;
-}		
-	
-.captionContainer:hover { 
 }
-	
+
+.captionContainer:hover {
+}
+
 
 .aboutContainer {
 	position: fixed;
@@ -174,7 +174,7 @@ iframe {
     left:25px;
 	width:50%;
 }
-	
+
 
 .menuContainer {
 	position: fixed;
@@ -196,7 +196,7 @@ iframe {
 .videoContainer {
 	margin:30px;
 }
-	
+
 /* div table things */
 .table {
 	display: table;
@@ -204,7 +204,7 @@ iframe {
 }
 
 .table-tr {
-	display: table-row; 
+	display: table-row;
 	width: auto;
 	clear: both;
 }
@@ -222,60 +222,60 @@ iframe {
 /* Type */
 
 .about {
-    font-family: "Akzidenz-Grotesk", arial, sans-serif;
+    font-family: sans-serif;
     font-size: 36px;
 	line-height: 44px;
 }
 
 .blurb {
-	font-family: "Akzidenz-Grotesk", arial, sans-serif;
+	font-family: sans-serif;
     font-size: 36px;
-	line-height: 44px; 
+	line-height: 44px;
 }
 
 .body {
 	font-size: 16px;
-	line-height: 18px; 
+	line-height: 18px;
 }
 
 .caption {
-    font-family: "Akzidenz-Grotesk", arial, sans-serif;
+    font-family: sans-serif;
 	font-size: 11px;
-	line-height: 14px; 
+	line-height: 14px;
 }
 
 
 .info {
-    font-family: "Akzidenz-Grotesk", arial, sans-serif;
+    font-family: sans-serif;
 	font-size: 15px;
 	line-height: 20px;
 }
-	
+
 .menu {
-	font-family:  "Starling", "times new roman", serif;
+	font-family: serif;
 	font-size: 36px;
     line-height: 44px;
 }
 
 .number {
-    font-family: "Akzidenz-Grotesk", arial, sans-serif;
+    font-family: sans-serif;
 	font-size: 9px;
     line-height: 14px;
 }
 
 .title {
-    font-family: "Starling", "times new roman", serif;
+    font-family: serif;
     font-size: 36px;
     line-height: 47px;
 }
 
 
 /* Utility */
-	
+
 .pad {
 	padding: 30px;
 }
-	
+
 
 .hidden {
 	visibility: hidden;
