@@ -45,7 +45,7 @@
 			text-decoration: underline;
 		}
 
-	
+
 			a:hover {
 				text-decoration:none;
 			}
@@ -59,11 +59,11 @@
 
 			}
 
-			
+
 
 			a img { border-width: 0px; }
 
-		
+
 
 		.clear {
 
@@ -71,7 +71,7 @@
 
 		}
 
-		
+
 
 		#left {
 
@@ -84,20 +84,20 @@
 			position:fixed;
 			z-index:1;
 
-		
+
 		}
 
-		
+
 
 		#left a {text-decoration:none;
 
 		}
 
-		
+
 
 		#left .design {display:none;}
 
-       
+
 
 
 
@@ -108,9 +108,9 @@
 
 		}
 
-		
 
-			
+
+
 
 
 		#left .space {
@@ -121,7 +121,7 @@
 
 		}
 
-		
+
 
 		#left .alignright {
 
@@ -131,7 +131,7 @@
 
 		}
 
-		
+
 
 			#left .space.small {
 
@@ -141,7 +141,7 @@
 
 			}
 
-		
+
 
 	#right {
 
@@ -150,36 +150,36 @@
         top:75px;
 display: inline-block;
         position:relative;
-  
+
 
         z-index:0;
 
-        	 
+
 
 		}
 
-		
+
 
 			#right .post {
 
-    margin-left:8%;
+    margin-left:8vw;
+		margin-right:8vw;
+    width:92vw;
 
-    width:92%;
-				
 
   
 
-				
+
 
 			}
 
-			
 
-	
 
-		
 
-			
+
+
+
+
 
 			img {
 
@@ -188,7 +188,7 @@ display: inline-block;
 
 			}
 
-			
+
 
 			#right .datenotes {
 
@@ -202,11 +202,11 @@ display: inline-block;
 
            padding-bottom: 100px;
 
-        
+
 
 			}
 
-			
+
 
 			#right .caption {
 
@@ -218,21 +218,21 @@ display: inline-block;
 
            padding-bottom: 100px;
 
-        
+
 
 			}
 
-			
+
 
 				#right a.datenotes {
 
             text-decoration:none;
 
-        
+
 
 			}
 
-			
+
 
 
 
@@ -252,30 +252,30 @@ display: inline-block;
 
 				margin: 0;
 
-				
+
 
 			}
 
-			
 
-			
 
-			
+
+
+
 
 			#right .post a.h3.link {
 
 			}
 
-			
-
-				
-			
 
 
 
-			
 
-			
+
+
+
+
+
+
 
 			#right .post blockquote {
 
@@ -287,11 +287,11 @@ display: inline-block;
 
 			}
 
-			
 
-	
 
-			
+
+
+
 
 			#right ol.notes {
 
@@ -321,9 +321,9 @@ display: inline-block;
 
           }
 
-          
 
-          
+
+
 
 			#right .text {
 
@@ -331,11 +331,11 @@ display: inline-block;
 
 			margin-left:4%;
 			display: inline-block;
-			
+
 
 			}
 
-			
+
 
 			#right .title {
 
@@ -363,11 +363,11 @@ display: inline-block;
 
      word-break: break-word;
 
-			
+
 
 			}
 
-			
+
 
 			#right .design {
 			min-width:680px;
@@ -376,7 +376,7 @@ display: inline-block;
 
 			}
 
-			
+
 
 			#right .designcaption {
 
@@ -390,9 +390,9 @@ display: inline-block;
 
 			}
 
-			
 
-			
+
+
 
 		#right #footer {
 
@@ -412,11 +412,11 @@ display: inline-block;
 
 		}
 
-		
+
 
 		#right #footer a {text-decoration:none;}
 
-		
+
 
 	.space2 {
 
@@ -449,7 +449,7 @@ display: inline-block;
 /* Modal Content (Image) */
 .modal-content {
     margin: auto;
-	max-height: 100%; 
+	max-height: 100%;
 }
 
 
