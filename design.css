@@ -1,10 +1,7 @@
 @charset "UTF-8";
 /* CSS Document */
 
-	* {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+
 
 		::-moz-selection { /* Code for Firefox */
 
@@ -31,7 +28,7 @@
         margin:0;
 	-webkit-text-stroke-width:0.35pt;
 			background: #000000;
-			font-family:'Times New Roman', 'Times', serif;
+			font-family: serif;
 			font-size: 24px;
 			padding: 20px;
 			line-height:115%;
