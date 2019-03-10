@@ -73,14 +73,14 @@
 
 		#left {
 				font-family:sans-serif;
-			font-size: 16px;
+			font-size: 22px;
 			width: 100%;
 			margin-left:5px;
 			top:0px;
-			letter-spacing:-0.3px;
+			letter-spacing:0px;
 			position:fixed;
 			z-index:1;
-			-webkit-text-stroke:0.3pt white;
+			-webkit-text-stroke:0.35pt white;
 		}
 
 
@@ -121,12 +121,9 @@
 
 
 
-		#left .alignright {
-
-		    float:right;
-
-		    margin-right:4%;
-
+	#left .alignright {
+		    text-align:right;
+		    width:calc(100% - 55px);
 		}
 
 
