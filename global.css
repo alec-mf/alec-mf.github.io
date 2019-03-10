@@ -23,15 +23,15 @@ table {
 #left {
 
     font-family:sans-serif;
-  font-size: 16px;
+  font-size: 22px;
   width: 100%;
   line-height:105%;
   margin-left:5px;
   top:5px;
-  letter-spacing:-0.3px;
+  letter-spacing:0px;
   position:fixed;
   z-index:1;
-  -webkit-text-stroke:0.3pt black;
+  -webkit-text-stroke:0.35pt black;
 }
 
 #left a {text-decoration:none;
@@ -50,14 +50,10 @@ table {
   text-decoration: none;
 
 }
-
 #left .alignright {
-
-    float:right;
-
-    margin-right:4%;
-
-}
+		    text-align:right;
+		    width:calc(100% - 55px);
+		}
 
 
 /* links */
