@@ -38,6 +38,8 @@ table {
 
 }
 
+#left a:hover {text-decoration:underline;}
+
 
 #left .design {display:none;}
 
