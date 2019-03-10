@@ -28,10 +28,10 @@ table {
   line-height:105%;
   margin-left:5px;
   top:5px;
-  letter-spacing:0px;
+  letter-spacing:-0.3px;
   position:fixed;
   z-index:1;
-  -webkit-text-stroke-width:0.3pt;
+  -webkit-text-stroke:0.3pt black;
 }
 
 #left a {text-decoration:none;
