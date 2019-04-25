@@ -46,7 +46,7 @@ a:active,
 .top {
     position:relative;
     white-space: nowrap;
-    overflow: scroll;
+    overflow: visible;
     top:6%;
     left:50%;
     transform: translateX(-50%);
@@ -55,7 +55,7 @@ a:active,
 .middle {
     position:absolute;
     white-space: nowrap;
-    overflow: scroll;
+    overflow: visible;
     top:50%;
     left:50%;
     transform: translate(-50%, -50%);
@@ -64,7 +64,7 @@ a:active,
 .bottom {
     position:absolute;
     white-space: nowrap;
-    overflow: scroll;
+    overflow: visible;
     bottom:6%;
     left:50%;
     transform: translateX(-50%);
