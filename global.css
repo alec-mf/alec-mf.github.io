@@ -5,8 +5,8 @@ body {
     line-height:25px;
     margin:0;
     padding: 20px;
-    -webkit-text-stroke-width:0.35pt black;
-	text-stroke:0.35pt black;
+    -webkit-text-stroke-width:0.25pt black;
+	text-stroke:0.25pt black;
 	text-align: left;
 	color: #00000;
 }
