@@ -5,7 +5,8 @@ body {
     line-height:25px;
     margin:0;
     padding: 20px;
-    -webkit-text-stroke-width:0.35pt;
+    -webkit-text-stroke-width:0.35pt black;
+	text-stroke:0.35pt black;
 	text-align: left;
 	color: #00000;
 }
@@ -31,7 +32,8 @@ table {
   letter-spacing:0px;
   position:fixed;
   z-index:1;
-  -webkit-text-stroke:0.35pt black;
+  -webkit-text-stroke:0.125pt black;
+	text-stroke:0.125pt black;
 }
 
 #left a {text-decoration:none;
