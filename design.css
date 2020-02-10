@@ -447,7 +447,7 @@ display: inline-block;
 
 @media only screen and (max-width: 800px) {
 	
-	#right .design {min-width:auto;}
+	#right .design {min-width:none;}
 	#right .text {display:block;}
 	#right .designcaption {
                 width:100%;
