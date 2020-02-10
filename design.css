@@ -447,10 +447,12 @@ display: inline-block;
 
 @media only screen and (max-width: 800px) {
 	
+        #right {margin: 0 4vw 0 4vw;}
+        #right .post {margin: 0 4vw 0 4vw;}
 	#right .design {min-width:none;}
 	#right .text {display:block;}
 	#right .designcaption {
-                width:100%;
+                width:100vw;
 		clear:both;
 		position:relative;
 		padding-bottom:8%;
