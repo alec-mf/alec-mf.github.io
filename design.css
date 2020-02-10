@@ -444,3 +444,15 @@ display: inline-block;
 		.tmblr-iframe--controls {display:none;}
 
 	.tmblr-iframe--controls.iframe-controls--desktop {display:none;}
+
+@media only screen and (min-width: 800px) {
+	
+	#right .design {min-width:auto;}
+	#right .text {display:block;}
+	#right .designcaption {
+		clear:both;
+		position:relative;
+		padding-bottom:8%;
+	}
+	
+}
