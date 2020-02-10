@@ -445,7 +445,7 @@ display: inline-block;
 
 	.tmblr-iframe--controls.iframe-controls--desktop {display:none;}
 
-@media only screen and (min-width: 800px) {
+@media only screen and (max-width: 800px) {
 	
 	#right .design {min-width:auto;}
 	#right .text {display:block;}
