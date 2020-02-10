@@ -450,6 +450,7 @@ display: inline-block;
 	#right .design {min-width:auto;}
 	#right .text {display:block;}
 	#right .designcaption {
+                width:100%;
 		clear:both;
 		position:relative;
 		padding-bottom:8%;
