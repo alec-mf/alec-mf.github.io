@@ -27,9 +27,9 @@
 }
 
 body {
+  margin:0 0 4rem 0;
   font-family:'garamond-bf', serif;
   letter-spacing: 0.66px;
-  margin:0;
 }
 
 p {
@@ -40,30 +40,6 @@ p {
 
 a {
   cursor:pointer;
-}
-
-#page-container {
-  margin-top:2rem;
-  height:100vh;
-  width:100vw;
-  position:absolute;
-  display:flex;
-  justify-content: flex-start;
-  overflow-y: hidden;
-  overflow-x: scroll;
-
-scroll-snap-type: x mandatory;
-
-}
-
-.page {
-  flex:0 0 100%;
-  margin:0;
-  display:flex;
-  align-items:center;
-  align-content:center;
-  justify-content: center;
-scroll-snap-align: start;
 }
 
 h1 {
@@ -78,46 +54,53 @@ h1 {
 }
 
 .header {
-  position: absolute;
-  top:0;
-  left: 50%;
-  margin-top:1rem;
-  transform: translate(-50%, 0);
+  display: flex;
+  justify-content: center;
   height:100px;
   padding-bottom:64px;
+  margin-top:1rem;
+  position:sticky;
+  top:1rem;
 }
 
 .cover {
   max-width: 1280px;
-  margin:164px auto auto;
+  margin:auto;
 
   font-size:7rem;
   font-family:'Arial', sans-serif;
   letter-spacing: 2px;
   -webkit-text-stroke: 3px black;
+  padding-bottom:20rem;
 }
 
 figure {
   margin-block-start: 0;
-margin-block-end: 4rem;
+margin-block-end: 5rem;
 margin-inline-start: 0;
 margin-inline-end: 0;
 }
 
+.images-block figure {
+  flex:1 1 300px;
+  max-width:600px;
+  padding:0 64px 0 0;
+}
+
+.images-block figure:last-child {
+  padding:0;
+}
+
 figcaption {
   font-size: 1rem;
-  padding-top:4rem;
+  padding-top:1rem;
 }
 
 .count {
-  float:right;
-  padding-top: 6rem;
+  padding-top: 1rem;
+  float: right;
   font-family: 'gerst', sans-serif;
   font-size:1rem;
-}
-
-.text-block {
-  margin:auto;
 }
 
 .main-text-block {
@@ -128,7 +111,7 @@ figcaption {
   line-height: 1.1;
   letter-spacing: 1px;
 
-  padding-bottom:5rem;
+  padding-bottom:4rem;
 }
 
 .secondary-text-block {
@@ -140,6 +123,7 @@ figcaption {
   line-height: 1.1;
   letter-spacing: 1px;
 
+  padding-bottom:8rem;
 }
 
 .serif {
@@ -155,41 +139,26 @@ figcaption {
 }
 
 .full-width-block {
-  display:flex;
-  margin:2rem;
-  justify-content: center;
+  padding-bottom:20rem;
 }
 
-.full-width-block figure {
-  max-height:calc(100% - 164px);
+.full-width-block img {
+  width:100%;
 }
 
-.full-width-block figure img {
-  height:100%;
-  object-fit: contain;
-  object-position: center;
-}
-
-.full-width-block figure figcaption {
-  padding-top: 1rem;
+.full-width-block figcaption {
+  margin:0 2rem;
 }
 
 .images-block {
   display:flex;
-  margin:0rem 2rem 2rem 2rem;
+  min-height:100vh;
+  margin:2rem;
+  width:calc(100% - 4rem);
   justify-content: space-around;
+  padding-bottom:20rem;
   flex-wrap: wrap;
-}
-
-.images-block figure {
-  flex:1 1 200px;
-  max-height:calc(100% - 328px);
-  max-width:600px;
-  padding:0 64px 0 0;
-}
-
-.images-block figure:last-child {
-  padding:0;
+  flex-shrink:1;
 }
 
 .image-viewer {
@@ -204,9 +173,9 @@ figcaption {
 
 .image-wrapper img {
   width:100%;
-  height:100%;
+  height:auto;
   object-fit: contain;
-  object-position: center;
+  object-position: center ;
 }
 
 .image-wrapper.active {
@@ -221,26 +190,28 @@ figcaption {
 .audio-block {
   display:flex;
   width:100%;
-  height:calc(100% - 100px);
+  height:100vh;
   align-items: center;
   justify-content: space-around;
-  flex-wrap: wrap;
-}
-
-.video-block {
-  display:flex;
-  justify-content: space-around;
+  padding-bottom:20rem;
   flex-wrap: wrap;
   flex-shrink:1;
 }
 
-.video-block figcaption {
-  padding-top:1rem;
+.video-block {
+  display:flex;
+  width:100%;
+  height:100vh;
+  align-items: center;
+  justify-content: space-around;
+  padding-bottom:20rem;
+  flex-wrap: wrap;
+  flex-shrink:1;
 }
 
 video {
-  object-position: center;
-  cursor:pointer;
+  object-position: bottom;
+  cursor: pointer;
 }
 
 .noselect {
@@ -254,17 +225,12 @@ video {
 
 .works-list {
   display:flex;
-  justify-content:space-around;
+  min-height:100vh;
+  justify-content:flex-start;
   flex-wrap:wrap;
-  margin:2rem;
+  max-width: 1280px;
+  margin:auto;
   padding-bottom:4rem;
-  overflow-y: scroll;
-}
-
-.works-list:last-child::after {
-content: '';
-flex: auto;
-margin:2rem;
 }
 
 .works-list .entry {
@@ -321,26 +287,18 @@ resize: vertical;
 
 <body>
 
+<div class="header">
+  <a href="http://blankforms.org">
+    <img src="./img/blankforms.png" height="100%">
+  </a>
+</div>
 
-
-<div id="page-container">
-
-  <div class="header">
-    <a href="http://blankforms.org">
-      <img src="./img/blankforms.png" height="100%">
-    </a>
-  </div>
-
-<div class="page">
 <div class="cover">
   Graham Lambkin:
   <p style="text-indent:12rem;"><i>Time Runs Through the Darkest Hour</i></p>
   <img src="./img/dates.svg">
 </div>
-</div>
 
-<div class="page">
-  <div class="text-block">
 <div class="main-text-block"><p>Blank Forms is proud to inaugurate our new exhibition space in Clinton Hill with <i>Time Runs Through The Darkest Hour</i>, an exhibition of new pencil and collage works by Graham Lambkin.</p>
 <p>Beginning with distressed paper, abused by stones and nails and rubbed with oil, Lambkin's destabilized planes spawn hallucinatory series of entangled biomorphic figures, liminal flora and fauna that appear uninvited in his endlessly reconfiguring landscapes. Emerging from a general malaise of despair, the whimsical mischief of Lambkin's earlier creatures have here shifted towards a more macabre meditation on ecological fragility, with the artist as a conduit for a real, rather than fantastic inner world. Embryonic forms proliferate upon flooded gyres, earthly delights in apparent acceptance of the wreckage and disintegration they have been thrust into.</p>
 <p><i>Time Runs Through The Darkest Hour</i> is Lambkin's fifth solo exhibition, following shows at Audio Visual Arts (New York, 2014), 356 Mission (Los Angeles, 2015), Kunstlerhaus (Stuttgart, 2016), and PiK (Cologne, 2019). Five books of his art have been published since 2004 and his video work has been screened alongside performances at the Whitney Museum of American Art and the New Museum.</p>
@@ -349,19 +307,13 @@ resize: vertical;
 <div class="secondary-text-block">
 <p>GRAHAM LAMBKIN (b. 1973, Dover, England) is a multidisciplinary artist who first came to prominence in the early '90s through the formation of his experimental music group The Shadow Ring. As a sound organizer rather than music maker, Lambkin looks at an everyday object and sees an ocean of possibility, continually transforming quotidian atmospheres and the mundane into expressive sound art using tape manipulation techniques, chance operations, and the thick ambience of domestic field recordings. His Kye imprint, founded in 2001, was an instrumental platform for the dissemination of and dialogue between work by an intergenerational cast of artists using sound, including Henning Christiansen, Anton Heyboer, Moniek Darge, and Gabi Losoncy. He began showing his visual art in 2014 with Came To Call Mine, an exhibition curated by Lawrence Kumpf and Justin Luke in conjunction with the publication of Lambkin's children's book (for adults) of the same name.
 </div>
-</div>
-</div>
 
-<div class="page">
-  <div class="full-width-block">
-  <figure>
+
+  <figure class="full-width-block">
     <img src="./img/Install shot 2.jpg" class="lazy">
   <figcaption><span class="sans">Exhibition view</span>&emsp;&emsp;Blank Forms, Brooklyn, NY</figcaption>
   </figure>
-</div>
-</div>
 
-<div class="page">
 <div class="images-block">
 
   <figure>
@@ -391,7 +343,7 @@ resize: vertical;
   <figcaption><span class="work-details"><i>Garden of Passing 01</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openinquiryform()">Inquire</a></figcaption>
   </figure>
 
-  <figure style="align-items:center;">
+  <figure style="align-self:center;">
     <div class="image-viewer" data-active="0">
       <div class="image-wrapper active">
         <img src="./img/cropped/Blow in Ocean Blue, 2019.jpg" class="lazy">
@@ -405,18 +357,13 @@ resize: vertical;
   </figure>
 
 </div>
-</div>
 
-<div class="page">
-<div class="full-width-block">
-  <figure>
+<figure class="full-width-block">
   <img src="./img/Install shot 4.jpg" class="lazy">
 <figcaption><span class="sans">Exhibition view</span>&emsp;&emsp;Blank Forms, Brooklyn, NY</figcaption>
 </figure>
-</div>
-</div>
 
-<div class="page">
+
 <div class="images-block">
 
   <figure>
@@ -449,17 +396,14 @@ resize: vertical;
   </figure>
 
 </div>
-</div>
 
-<div class="page">
 <div class="main-text-block">
   <p>Lorem ipsum dolor sit amet, at eam possim adversarium reprehendunt, porro bonorum te pri, est utamur fabellas ad. Vel te meis veniam, dictas possim ex sit, at mei dicta discere detracto.</p>
 </div>
-</div>
 
-<div class="page">
+
 <div class="audio-block">
-<audio id="audioplayerexample" src="./audio/audioexample.mp3" type="audio/mp3" preload="auto" loop>
+<audio id="audioplayerexample" src="./audio/audioexample.mp3" type="audio/mp3" loop>
   Your browser does not support the audio element.
 </audio>
   <div>
@@ -467,9 +411,8 @@ resize: vertical;
    <span id="audioctrl" class="sans noselect" style="cursor:pointer;">Play audio</span>
    </div>
 </div>
-</div>
 
-<div class="page">
+
 <div class="video-block">
   <figure>
     <video id="videoplayerexample" width="100%" height="auto" loop>
@@ -482,18 +425,12 @@ resize: vertical;
       </figcaption>
     </figure>
     </div>
-  </div>
 
-<div class="page">
-<div class="full-width-block">
-  <figure>
+<figure class="full-width-block">
   <img src="./img/Install shot 3.jpg" class="lazy">
 <figcaption><span class="sans">Exhibition view</span>&emsp;&emsp;Blank Forms, Brooklyn, NY</figcaption>
 </figure>
-</div>
-</div>
 
-<div class="page">
 <div class="works-list">
   <div class="entry"><img src="./img/cropped/A Just Tide, 2019.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openinquiryform()">Inquire</a></div>
   <div class="entry"><img src="./img/cropped/Blow in Ocean Blue, 2019.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openinquiryform()">Inquire</a></div>
@@ -510,7 +447,6 @@ resize: vertical;
   <div class="entry"><img src="./img/cropped/Silk Lion, 2018.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openinquiryform()">Inquire</a></div>
   <div class="entry"><img src="./img/cropped/Winter Holding Center, 2018.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openinquiryform()">Inquire</a></div>
 </div>
-</div>
 
 <div id="inquiry-form-container">
   <div id="inquiry-form">
@@ -525,8 +461,6 @@ resize: vertical;
 </div>
 
 </div>
-</div>
-
 <script src="./js/main.js"></script>
 </body>
 
