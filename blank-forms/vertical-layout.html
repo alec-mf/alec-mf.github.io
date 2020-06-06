@@ -27,7 +27,7 @@
 }
 
 body {
-  margin:1rem 2rem 4rem 2rem;
+  margin:0 0 4rem 0;
   font-family:'garamond-bf', serif;
   letter-spacing: 0.66px;
 }
@@ -108,7 +108,7 @@ figcaption {
   line-height: 1.1;
   letter-spacing: 1px;
 
-  padding-bottom:5rem;
+  padding-bottom:4rem;
 }
 
 .secondary-text-block {
@@ -120,7 +120,7 @@ figcaption {
   line-height: 1.1;
   letter-spacing: 1px;
 
-  padding-bottom:20rem;
+  padding-bottom:8rem;
 }
 
 .serif {
@@ -143,10 +143,15 @@ figcaption {
   width:100%;
 }
 
+.full-width-block figcaption {
+  margin:0 2rem;
+}
+
 .images-block {
   display:flex;
   min-height:100vh;
-  width:100%;
+  margin:2rem;
+  width:calc(100% - 4rem);
   justify-content: space-around;
   padding-bottom:20rem;
   flex-wrap: wrap;
