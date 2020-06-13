@@ -119,10 +119,11 @@ function closeInquiryForm() {
 
 //horizontal scrolling
 
-function scrollconverter() {
-	scrollConverter.activate();
-};
+(function () {
 
+	scrollConverter.activate();
+
+}());
 
 
 // modal
