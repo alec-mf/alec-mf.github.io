@@ -43,14 +43,12 @@ a {
 }
 
 #page-container {
-  margin-top:164px;
-  height:calc(100vh - 164px);
+  height:100vh;
   width:100vw;
   position:absolute;
   display:flex;
   justify-content: flex-start;
   overflow-y: hidden;
-  overflow-x: scroll;
 
 scroll-snap-type: x mandatory;
 
@@ -58,10 +56,16 @@ scroll-snap-type: x mandatory;
 
 .page {
   flex:0 0 100%;
-
-  margin:1rem 2rem 4rem 2rem;
+  height: calc(100vh - 164px);
+  margin:164px 2rem 4rem 2rem;
 
 scroll-snap-align: start;
+}
+
+.full-width.page {
+  margin:0;
+  height:100vh;
+  width:100vw;
 }
 
 h1 {
@@ -83,6 +87,7 @@ h1 {
   transform: translate(-50%, 0);
   height:100px;
   padding-bottom:64px;
+  z-index:1;
 }
 
 .cover {
@@ -104,14 +109,19 @@ margin-inline-end: 0;
 
 figcaption {
   font-size: 1rem;
-  padding-top:6rem;
+  padding:0 1rem 2rem 0;
+  margin:0;
+  position:absolute;
+  bottom:0;
+  width:100%;
 }
 
 .count {
-  float:right;
-  padding-top: 6rem;
-  font-family: 'gerst', sans-serif;
-  font-size:1rem;
+width: 100%;
+text-align: right;
+font-family: 'gerst', sans-serif;
+font-size: 1rem;
+margin-top: 1rem;
 }
 
 .main-text-block {
@@ -150,24 +160,31 @@ figcaption {
 }
 
 .full-width-block {
+  position: relative;
+  top:0;
+  height:100vh;
   display:flex;
-  margin:2rem;
+  margin:0;
   justify-content: center;
 }
 
 .full-width-block figure {
-  max-height:calc(100% - 164px);
-  max-width:1140px;
+  height:100%;
+  width:100%;
 }
 
 .full-width-block figure img {
   height:100%;
-  object-fit: contain;
+  width:100%;
+  object-fit: cover;
   object-position: center;
 }
 
 .full-width-block figure figcaption {
-  padding-top: 1rem;
+  position:absolute;
+  bottom:0;
+  width:100%;
+  padding:0.5rem 0.5rem 1rem 2rem;
 }
 
 .images-block {
@@ -179,8 +196,8 @@ figcaption {
 
 .images-block figure {
   flex:1 1 200px;
-  max-height:calc(100% - 328px);
-  max-width:600px;
+  max-height:calc(100% - 246px);
+  min-height: 200px;
   padding:0 64px 0 0;
 }
 
@@ -192,21 +209,28 @@ figcaption {
   margin:auto;
 }
 
-.image-wrapper {
+.image-slide-wrapper {
   display:none;
   overflow: hidden;
   position:relative;
 }
 
-.image-wrapper img {
+.image-slide-wrapper img {
   width:100%;
   height:100%;
   object-fit: contain;
   object-position: center;
 }
 
-.image-wrapper.active {
+.image-slide-wrapper.active {
   display: block;
+}
+
+.image-modal-wrapper img {
+  width:100%;
+  height:100%;
+  object-fit: contain;
+  object-position: center;
 }
 
 .detail img {
@@ -308,6 +332,34 @@ vertical-align: top;
 resize: vertical;
 }
 
+
+/* modal */
+
+#modal-frame {
+    display: none;
+    position: fixed;
+    z-index: 4;
+    line-height: 0;
+	left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 90vw;
+	max-height: 90vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+	cursor: zoom-out;
+}
+
+.modal-content {
+  margin: auto 0 -20px;
+    width:100%;
+    overflow-x: hidden;
+}
+
+.modal-enabled {
+    cursor:zoom-in;
+}
+
 </style>
 
 </head>
@@ -341,11 +393,11 @@ resize: vertical;
 </div>
 </div>
 
-<div class="page">
+<div class="page full-width">
   <div class="full-width-block">
   <figure>
     <img src="./img/Install shot 2.jpg" class="lazy">
-  <figcaption><span class="sans">Exhibition view</span>&emsp;&emsp;Blank Forms, Brooklyn, NY</figcaption>
+  <div style="background-color:white;"><figcaption><span class="sans">Exhibition view</span>&emsp;&emsp;Blank Forms, Brooklyn, NY</figcaption></div>
   </figure>
 </div>
 </div>
@@ -355,48 +407,62 @@ resize: vertical;
 
   <figure>
     <div class="image-viewer" data-active="0" style="flex-shrink:3;">
-      <div class="image-wrapper active">
+      <div class="image-slide-wrapper active">
         <img src="./img/cropped/Calun, 2018.jpg" class="lazy">
       </div>
-      <div class="image-wrapper detail">
+      <div class="image-slide-wrapper detail">
         <img src="./img/cropped/Calun, 2018.jpg" class="lazy">
       </div>
-      <span class="count"><span class="current"></span>/<span class="total"></span></span>
+      <div class="count"><span class="current"></span>/<span class="total"></span></div>
     </div>
-  <figcaption><span class="work-details"><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openinquiryform()">Inquire</a>
+  <figcaption><span class="work-details"><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a>
     </figcaption>
   </figure>
 
   <figure>
     <div class="image-viewer" data-active="0">
-      <div class="image-wrapper active">
+      <div class="image-slide-wrapper active">
         <img src="./img/cropped/Garden of Passing 01, 2018.jpg" class="lazy">
       </div>
-      <div class="image-wrapper detail">
+      <div class="image-slide-wrapper detail">
         <img src="./img/cropped/Garden of Passing 01, 2018.jpg" class="lazy">
       </div>
-      <span class="count"><span class="current"></span>/<span class="total"></span></span>
+      <div class="count"><span class="current"></span>/<span class="total"></span></div>
     </div>
-  <figcaption><span class="work-details"><i>Garden of Passing 01</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openinquiryform()">Inquire</a></figcaption>
+  <figcaption><span class="work-details"><i>Garden of Passing 01</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></figcaption>
   </figure>
 
-  <figure style="align-self:center;">
+  <figure>
     <div class="image-viewer" data-active="0">
-      <div class="image-wrapper active">
+      <div class="image-slide-wrapper active">
         <img src="./img/cropped/Blow in Ocean Blue, 2019.jpg" class="lazy">
       </div>
-      <div class="image-wrapper detail">
+      <div class="image-slide-wrapper detail">
         <img src="./img/cropped/Blow in Ocean Blue, 2019.jpg" class="lazy">
       </div>
-      <span class="count"><span class="current"></span>/<span class="total"></span></span>
+      <div class="count"><span class="current"></span>/<span class="total"></span></div>
     </div>
-  <figcaption><span class="work-details"><i>Blow in Ocean Blue</i>, 2019<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openinquiryform()">Inquire</a></figcaption>
+  <figcaption><span class="work-details"><i>Blow in Ocean Blue</i>, 2019<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></figcaption>
   </figure>
 
 </div>
 </div>
 
 <div class="page">
+  <div class="images-block">
+
+    <figure>
+      <div class="image-modal-wrapper">
+          <img src="./img/cropped/Calun, 2018.jpg" class="lazy modal-enabled">
+      </div>
+    <figcaption><span class="work-details"><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a>
+      </figcaption>
+    </figure>
+
+  </div>
+</div>
+
+<div class="full-width page">
 <div class="full-width-block">
   <figure>
   <img src="./img/Install shot 4.jpg" class="lazy">
@@ -410,31 +476,31 @@ resize: vertical;
 
   <figure>
     <div class="image-viewer" data-active="0">
-    <div class="image-wrapper active">
+    <div class="image-slide-wrapper active">
       <img src="./img/individual/A Just Tide, 2019.jpg" class="lazy">
     </div>
-      <div class="image-wrapper">
+      <div class="image-slide-wrapper">
         <img src="./img/cropped/A Just Tide, 2019.jpg" class="lazy">
       </div>
-      <div class="image-wrapper detail">
+      <div class="image-slide-wrapper detail">
         <img src="./img/cropped/A Just Tide, 2019.jpg" class="lazy">
       </div>
-      <span class="count"><span class="current"></span>/<span class="total"></span></span>
+      <div class="count"><span class="current"></span>/<span class="total"></span></div>
     </div>
-    <figcaption><span class="work-details"><i>A Just Tide</i>, 2019<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openinquiryform()">Inquire</a></figcaption>
+    <figcaption><span class="work-details"><i>A Just Tide</i>, 2019<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></figcaption>
   </figure>
 
   <figure>
     <div class="image-viewer" data-active="0">
-      <div class="image-wrapper active">
+      <div class="image-slide-wrapper active">
         <img src="./img/individual/Foothills, 2019.jpg" class="lazy">
       </div>
-      <div class="image-wrapper detail">
+      <div class="image-slide-wrapper detail">
         <img src="./img/cropped/Foothills, 2019.jpg" class="lazy">
       </div>
-      <span class="count"><span class="current"></span>/<span class="total"></span></span>
+      <div class="count"><span class="current"></span>/<span class="total"></span></div>
     </div>
-    <figcaption><span class="work-details"><i>Foothills</i>, 2019<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openinquiryform()">Inquire</a></figcaption>
+    <figcaption><span class="work-details"><i>Foothills</i>, 2019<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></figcaption>
   </figure>
 
 </div>
@@ -473,7 +539,7 @@ resize: vertical;
     </div>
   </div>
 
-<div class="page">
+<div class="full-width page">
 <div class="full-width-block">
   <figure>
   <img src="./img/Install shot 3.jpg" class="lazy">
@@ -484,20 +550,20 @@ resize: vertical;
 
 <div class="page">
 <div class="works-list">
-  <div class="entry"><img src="./img/cropped/A Just Tide, 2019.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openinquiryform()">Inquire</a></div>
-  <div class="entry"><img src="./img/cropped/Blow in Ocean Blue, 2019.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openinquiryform()">Inquire</a></div>
-  <div class="entry"><img src="./img/cropped/Calun, 2018.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openinquiryform()">Inquire</a></div>
-  <div class="entry"><img src="./img/cropped/Every Silver Morning, 2019.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openinquiryform()">Inquire</a></div>
-  <div class="entry"><img src="./img/cropped/Foothills, 2019.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openinquiryform()">Inquire</a></div>
-  <div class="entry"><img src="./img/cropped/Garden of Passing 01, 2018.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openinquiryform()">Inquire</a></div>
-  <div class="entry"><img src="./img/cropped/Garden of Passing 02, 2018.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openinquiryform()">Inquire</a></div>
-  <div class="entry"><img src="./img/cropped/Master in the Fall, 2019.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openinquiryform()">Inquire</a></div>
-  <div class="entry"><img src="./img/cropped/Mushroom Captivity, 2018.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openinquiryform()">Inquire</a></div>
-  <div class="entry"><img src="./img/cropped/Passage Through Life, 2018.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openinquiryform()">Inquire</a></div>
-  <div class="entry"><img src="./img/cropped/Raintrade, 2019.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openinquiryform()">Inquire</a></div>
-  <div class="entry"><img src="./img/cropped/Shipwreck, 2019.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openinquiryform()">Inquire</a></div>
-  <div class="entry"><img src="./img/cropped/Silk Lion, 2018.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openinquiryform()">Inquire</a></div>
-  <div class="entry"><img src="./img/cropped/Winter Holding Center, 2018.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openinquiryform()">Inquire</a></div>
+  <div class="entry"><img src="./img/cropped/A Just Tide, 2019.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></div>
+  <div class="entry"><img src="./img/cropped/Blow in Ocean Blue, 2019.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></div>
+  <div class="entry"><img src="./img/cropped/Calun, 2018.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></div>
+  <div class="entry"><img src="./img/cropped/Every Silver Morning, 2019.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></div>
+  <div class="entry"><img src="./img/cropped/Foothills, 2019.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></div>
+  <div class="entry"><img src="./img/cropped/Garden of Passing 01, 2018.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></div>
+  <div class="entry"><img src="./img/cropped/Garden of Passing 02, 2018.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></div>
+  <div class="entry"><img src="./img/cropped/Master in the Fall, 2019.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></div>
+  <div class="entry"><img src="./img/cropped/Mushroom Captivity, 2018.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></div>
+  <div class="entry"><img src="./img/cropped/Passage Through Life, 2018.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></div>
+  <div class="entry"><img src="./img/cropped/Raintrade, 2019.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></div>
+  <div class="entry"><img src="./img/cropped/Shipwreck, 2019.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></div>
+  <div class="entry"><img src="./img/cropped/Silk Lion, 2018.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></div>
+  <div class="entry"><img src="./img/cropped/Winter Holding Center, 2018.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></div>
 </div>
 </div>
 
@@ -507,16 +573,23 @@ resize: vertical;
       <span class="inquiry-work-details"><i>Title of given work</i>, 2019<Br>Medium<br>Dimensions &times; dimensions<br><br></span>
         <textarea></textarea><br><br>
         <div style="text-align:right;">
-        <a class="sans" onclick="closeinquiryform()">Cancel</span>&emsp;&emsp;
-        <a class="sans">Submit</span>
+        <a class="sans" onclick="closeInquiryForm()">Cancel</span>&emsp;&emsp;
+        <a class="sans">Submit</a></span>
       </div>
   </div>
 </div>
 
+<div id="modal-frame">
+  <img class="modal-content" id="modal-image">
+</div>
+
 </div>
 </div>
 
-<script src="./js/main.js"></script>
+
+<script src="./js/scroll-converter.js" async></script>
+<script src="./js/main.js" async></script>
+
 </body>
 
 
