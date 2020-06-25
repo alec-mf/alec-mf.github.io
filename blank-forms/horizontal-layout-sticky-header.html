@@ -39,6 +39,8 @@ p {
 }
 
 a {
+  text-decoration: none;
+  color:black;
   cursor:pointer;
 }
 
@@ -56,8 +58,8 @@ scroll-snap-type: x mandatory;
 
 .page {
   flex:0 0 100%;
-  height: calc(100vh - 164px);
-  margin:164px 2rem 4rem 2rem;
+  height: calc(100vh - 12rem);
+  margin:4rem 2rem 4rem 2rem;
 
 scroll-snap-align: start;
 }
@@ -190,7 +192,6 @@ margin-top: 1rem;
 .images-block {
   display:flex;
   height:100%;
-  max-height:calc(100% - 246px);
   margin:2rem;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -198,7 +199,7 @@ margin-top: 1rem;
 
 .images-block figure {
   flex:1 1 200px;
- 
+
   min-height: 200px;
   padding:0 64px 0 0;
 }
@@ -345,8 +346,8 @@ resize: vertical;
 	left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 90vw;
-	max-height: 90vh;
+    width: 100vw;
+	max-height: 100vh;
     overflow-y: scroll;
     overflow-x: hidden;
 	cursor: zoom-out;
@@ -370,7 +371,7 @@ resize: vertical;
 
 <div class="header">
   <a href="http://blankforms.org">
-    <img src="./img/blankforms.png" height="100%">
+    <span style="font-size: 1.5rem;">Blank Forms</span>
   </a>
 </div>
 
