@@ -2,7 +2,7 @@
 
 :root {
   --header-height:100px;
-  --content-width:2000px;
+  --content-width:100vw;
 }
 
 @font-face {
