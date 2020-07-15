@@ -1,0 +1,599 @@
+<html>
+<head>
+
+<style>
+
+@font-face {
+  font-family: "garamond-bf";
+  src: url("./fonts/Garamond-BF-Regular.ttf") format("truetype");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "garamond-bf";
+  src: url("./fonts/Garamond-BF-Italic.ttf") format("truetype");
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "gerst";
+  src: url("./fonts/GerstnerProgrammFSL-Regular.otf") format("opentype");
+  font-style: normal;
+}
+@font-face {
+  font-family: "libertine-mono";
+  src: url("./fonts/LinLibertine_M.otf") format("opentype");
+  font-style: normal;
+}
+
+body {
+  font-family:'garamond-bf', serif;
+  letter-spacing: 0.66px;
+  margin:0;
+}
+
+p {
+  margin-block-start:0;
+  margin-block-end:0;
+  text-indent:2rem;
+}
+
+a {
+  text-decoration: none;
+  color:black;
+  cursor:pointer;
+}
+
+#page-container {
+  height:100vh;
+  width:100vw;
+  position:absolute;
+  display:flex;
+  justify-content: flex-start;
+  overflow-y: hidden;
+
+scroll-snap-type: x mandatory;
+
+}
+
+.page {
+  flex:0 0 100%;
+  height: calc(100vh - 12rem);
+  margin:4rem 2rem 4rem 2rem;
+
+scroll-snap-align: start;
+}
+
+.full-width.page {
+  margin:0;
+  height:100vh;
+  width:100vw;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-weight: normal;
+  font-size:1rem;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  letter-spacing: 2px;
+}
+
+.header {
+  position:fixed;
+  top:0;
+  left: 50%;
+  margin-top:1rem;
+  transform: translate(-50%, 0);
+  height:100px;
+  padding-bottom:64px;
+  z-index:1;
+}
+
+.cover {
+  max-width: 1280px;
+  margin:auto;
+
+  font-size:7rem;
+  font-family:'Arial', sans-serif;
+  letter-spacing: 2px;
+  -webkit-text-stroke: 3px black;
+}
+
+figure {
+  margin-block-start: 0;
+margin-block-end: 5rem;
+margin-inline-start: 0;
+margin-inline-end: 0;
+}
+
+figcaption {
+  font-size: 1rem;
+  padding:0 1rem 2rem 0;
+  margin:0;
+  position:absolute;
+  bottom:0;
+  width:100%;
+}
+
+.count {
+width: 100%;
+text-align: right;
+font-family: 'gerst', sans-serif;
+font-size: 1rem;
+margin-top: 1rem;
+}
+
+.main-text-block {
+  max-width: 1280px;
+  margin:auto;
+
+  font-size:2rem;
+  line-height: 1.1;
+  letter-spacing: 1px;
+
+  padding-bottom:5rem;
+}
+
+.secondary-text-block {
+  max-width: 768px;
+  margin:auto;
+
+  font-family: 'gerst', sans-serif;
+  font-size:1.125rem;
+  line-height: 1.1;
+  letter-spacing: 1px;
+
+  padding-bottom:20rem;
+}
+
+.serif {
+    font-family:'garamond-bf', serif;
+}
+
+.sans {
+  font-family: 'gerst', sans-serif;
+}
+
+.spacer-block {
+  padding-bottom:20rem;
+}
+
+.full-width-block {
+  position: relative;
+  top:0;
+  height:100vh;
+  display:flex;
+  margin:0;
+  justify-content: center;
+}
+
+.full-width-block figure {
+  height:100%;
+  width:100%;
+}
+
+.full-width-block figure img {
+  height:100%;
+  width:100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.full-width-block figure figcaption {
+  position:absolute;
+  bottom:0;
+  width:100%;
+  padding:0.5rem 0.5rem 1rem 2rem;
+}
+
+.images-block {
+  display:flex;
+  height:100%;
+  margin:2rem;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.images-block figure {
+  flex:1 1 200px;
+
+  min-height: 200px;
+  padding:0 64px 0 0;
+}
+
+.images-block figure:last-child {
+  padding:0;
+}
+
+.image-viewer {
+  margin:auto;
+}
+
+.image-slide-wrapper {
+  display:none;
+  overflow: hidden;
+  position:relative;
+}
+
+.image-slide-wrapper img {
+  width:100%;
+  height:100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.image-slide-wrapper.active {
+  display: block;
+}
+
+.image-modal-wrapper img {
+  width:100%;
+  height:100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.detail img {
+  object-fit: none;
+  object-position: center;
+}
+
+.audio-block {
+  display:flex;
+  width:100%;
+  height:calc(100% - 100px);
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.video-block {
+  display:flex;
+  width:100%;
+  height:calc(100% - 100px);
+  justify-content: space-around;
+  flex-wrap: wrap;
+  flex-shrink:1;
+}
+
+.video-block figcaption {
+  padding-top:1rem;
+}
+
+video {
+  object-position: bottom;
+  cursor:pointer;
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+
+.works-list {
+  display:flex;
+  height:100%;
+  justify-content:space-around;
+  flex-wrap:wrap;
+  margin:2rem;
+  padding-bottom:4rem;
+  overflow-y: scroll;
+}
+
+.works-list .entry {
+max-width:200px;
+
+padding-right:1rem;
+padding-left:1rem;
+padding-bottom:3rem;
+}
+
+.works-list img {
+  width:100%;
+  object-fit: cover;
+}
+
+#inquiry-form-container {
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  height:100vh;
+  width:100vw;
+  margin:auto;
+}
+
+#inquiry-form {
+  position:absolute;
+  background-color:rgb(245,245,245);
+  padding: 1rem 2rem 1rem 2rem;
+  max-height:100vh;
+  width: 25rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+textarea {
+background-color:transparent;
+border:1px solid black;
+outline:0;
+min-height:10rem;
+max-height:50rem;
+width:100%;
+font-size:1rem;
+padding:6px;
+font-family: 'libertine-mono', monospace;
+vertical-align: top;
+resize: vertical;
+}
+
+
+/* modal */
+
+#modal-frame {
+    display: none;
+    position: fixed;
+    z-index: 4;
+    line-height: 0;
+	left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+	max-height: 100vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+	cursor: zoom-out;
+}
+
+.modal-content {
+  margin: auto 0 -20px;
+    width:100%;
+    overflow-x: hidden;
+}
+
+.modal-enabled {
+    cursor:zoom-in;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+  <a href="http://blankforms.org">
+    <span style="font-size: 1.5rem;">Blank Forms</span>
+  </a>
+</div>
+
+<div id="page-container">
+
+<div class="page">
+<div class="cover">
+  Graham Lambkin:
+  <p style="text-indent:12rem;"><i><span style="color:#5BC3E8;-webkit-text-stroke:3px #5BC3E8;">Time Runs Through the Darkest Hour</span></i></p>
+  <img src="./img/dates.svg">
+</div>
+</div>
+
+<div class="page">
+<div class="main-text-block"><p>Blank Forms is proud to inaugurate our new exhibition space in Clinton Hill with <i>Time Runs Through The Darkest Hour</i>, an exhibition of new pencil and collage works by Graham Lambkin.</p>
+<p>Beginning with distressed paper, abused by stones and nails and rubbed with oil, Lambkin's destabilized planes spawn hallucinatory series of entangled biomorphic figures, liminal flora and fauna that appear uninvited in his endlessly reconfiguring landscapes. Emerging from a general malaise of despair, the whimsical mischief of Lambkin's earlier creatures have here shifted towards a more macabre meditation on ecological fragility, with the artist as a conduit for a real, rather than fantastic inner world. Embryonic forms proliferate upon flooded gyres, earthly delights in apparent acceptance of the wreckage and disintegration they have been thrust into.</p>
+<p><i>Time Runs Through The Darkest Hour</i> is Lambkin's fifth solo exhibition, following shows at Audio Visual Arts (New York, 2014), 356 Mission (Los Angeles, 2015), Kunstlerhaus (Stuttgart, 2016), and PiK (Cologne, 2019). Five books of his art have been published since 2004 and his video work has been screened alongside performances at the Whitney Museum of American Art and the New Museum.</p>
+</div>
+
+<div class="secondary-text-block">
+<p>GRAHAM LAMBKIN (b. 1973, Dover, England) is a multidisciplinary artist who first came to prominence in the early '90s through the formation of his experimental music group The Shadow Ring. As a sound organizer rather than music maker, Lambkin looks at an everyday object and sees an ocean of possibility, continually transforming quotidian atmospheres and the mundane into expressive sound art using tape manipulation techniques, chance operations, and the thick ambience of domestic field recordings. His Kye imprint, founded in 2001, was an instrumental platform for the dissemination of and dialogue between work by an intergenerational cast of artists using sound, including Henning Christiansen, Anton Heyboer, Moniek Darge, and Gabi Losoncy. He began showing his visual art in 2014 with Came To Call Mine, an exhibition curated by Lawrence Kumpf and Justin Luke in conjunction with the publication of Lambkin's children's book (for adults) of the same name.
+</div>
+</div>
+
+<div class="page full-width">
+  <div class="full-width-block">
+  <figure>
+    <img src="./img/Install shot 2.jpg" class="lazy">
+  <div style="background-color:white;"><figcaption><span class="sans">Exhibition view</span>&emsp;&emsp;Blank Forms, Brooklyn, NY</figcaption></div>
+  </figure>
+</div>
+</div>
+
+<div class="page">
+<div class="images-block">
+
+  <figure>
+    <div class="image-viewer" data-active="0" style="flex-shrink:3;">
+      <div class="image-slide-wrapper active">
+        <img src="./img/cropped/Calun, 2018.jpg" class="lazy">
+      </div>
+      <div class="image-slide-wrapper detail">
+        <img src="./img/cropped/Calun, 2018.jpg" class="lazy">
+      </div>
+      <div class="count"><span class="current"></span>/<span class="total"></span></div>
+    </div>
+  <figcaption><span class="work-details"><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a>
+    </figcaption>
+  </figure>
+
+  <figure>
+    <div class="image-viewer" data-active="0">
+      <div class="image-slide-wrapper active">
+        <img src="./img/cropped/Garden of Passing 01, 2018.jpg" class="lazy">
+      </div>
+      <div class="image-slide-wrapper detail">
+        <img src="./img/cropped/Garden of Passing 01, 2018.jpg" class="lazy">
+      </div>
+      <div class="count"><span class="current"></span>/<span class="total"></span></div>
+    </div>
+  <figcaption><span class="work-details"><i>Garden of Passing 01</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></figcaption>
+  </figure>
+
+  <figure>
+    <div class="image-viewer" data-active="0">
+      <div class="image-slide-wrapper active">
+        <img src="./img/cropped/Blow in Ocean Blue, 2019.jpg" class="lazy">
+      </div>
+      <div class="image-slide-wrapper detail">
+        <img src="./img/cropped/Blow in Ocean Blue, 2019.jpg" class="lazy">
+      </div>
+      <div class="count"><span class="current"></span>/<span class="total"></span></div>
+    </div>
+  <figcaption><span class="work-details"><i>Blow in Ocean Blue</i>, 2019<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></figcaption>
+  </figure>
+
+</div>
+</div>
+
+<div class="page">
+  <div class="images-block">
+
+    <figure>
+      <div class="image-modal-wrapper">
+          <img src="./img/cropped/Calun, 2018.jpg" class="lazy modal-enabled">
+      </div>
+    <figcaption><span class="work-details"><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a>
+      </figcaption>
+    </figure>
+
+  </div>
+</div>
+
+<div class="full-width page">
+<div class="full-width-block">
+  <figure>
+  <img src="./img/Install shot 4.jpg" class="lazy">
+<figcaption><span class="sans">Exhibition view</span>&emsp;&emsp;Blank Forms, Brooklyn, NY</figcaption>
+</figure>
+</div>
+</div>
+
+<div class="page">
+<div class="images-block">
+
+  <figure>
+    <div class="image-viewer" data-active="0">
+    <div class="image-slide-wrapper active">
+      <img src="./img/individual/A Just Tide, 2019.jpg" class="lazy">
+    </div>
+      <div class="image-slide-wrapper">
+        <img src="./img/cropped/A Just Tide, 2019.jpg" class="lazy">
+      </div>
+      <div class="image-slide-wrapper detail">
+        <img src="./img/cropped/A Just Tide, 2019.jpg" class="lazy">
+      </div>
+      <div class="count"><span class="current"></span>/<span class="total"></span></div>
+    </div>
+    <figcaption><span class="work-details"><i>A Just Tide</i>, 2019<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></figcaption>
+  </figure>
+
+  <figure>
+    <div class="image-viewer" data-active="0">
+      <div class="image-slide-wrapper active">
+        <img src="./img/individual/Foothills, 2019.jpg" class="lazy">
+      </div>
+      <div class="image-slide-wrapper detail">
+        <img src="./img/cropped/Foothills, 2019.jpg" class="lazy">
+      </div>
+      <div class="count"><span class="current"></span>/<span class="total"></span></div>
+    </div>
+    <figcaption><span class="work-details"><i>Foothills</i>, 2019<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></figcaption>
+  </figure>
+
+</div>
+</div>
+
+<div class="page">
+<div class="main-text-block">
+  <p>Lorem ipsum dolor sit amet, at eam possim adversarium reprehendunt, porro bonorum te pri, est utamur fabellas ad. Vel te meis veniam, dictas possim ex sit, at mei dicta discere detracto.</p>
+</div>
+</div>
+
+<div class="page">
+<div class="audio-block">
+<audio id="audioplayerexample" src="./audio/audioexample.mp3" type="audio/mp3" preload="auto" loop>
+  Your browser does not support the audio element.
+</audio>
+  <div>
+   <span class="serif"><i>Audio title</i>, 2019<br>4 minutes 33 seconds</span><br><Br>
+   <span id="audioctrl" class="sans noselect" style="cursor:pointer;">Play audio</span>
+   </div>
+</div>
+</div>
+
+<div class="page">
+<div class="video-block">
+  <figure>
+    <video id="videoplayerexample" width="100%" height="auto" loop>
+        <source src="./video/academy.mp4" type="video/mp4">
+    Your browser does not support the audio element.</video>
+    <div>
+      <figcaption>
+        <span class="serif"><i>Video title</i>, 2019<br>4 minutes 33 seconds</span><br><Br>
+        <span id="videoctrl" class="sans noselect" style="cursor:pointer;">Play video</span>
+      </figcaption>
+    </figure>
+    </div>
+  </div>
+
+<div class="full-width page">
+<div class="full-width-block">
+  <figure>
+  <img src="./img/Install shot 3.jpg" class="lazy">
+<figcaption><span class="sans">Exhibition view</span>&emsp;&emsp;Blank Forms, Brooklyn, NY</figcaption>
+</figure>
+</div>
+</div>
+
+<div class="page">
+<div class="works-list">
+  <div class="entry"><img src="./img/cropped/A Just Tide, 2019.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></div>
+  <div class="entry"><img src="./img/cropped/Blow in Ocean Blue, 2019.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></div>
+  <div class="entry"><img src="./img/cropped/Calun, 2018.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></div>
+  <div class="entry"><img src="./img/cropped/Every Silver Morning, 2019.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></div>
+  <div class="entry"><img src="./img/cropped/Foothills, 2019.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></div>
+  <div class="entry"><img src="./img/cropped/Garden of Passing 01, 2018.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></div>
+  <div class="entry"><img src="./img/cropped/Garden of Passing 02, 2018.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></div>
+  <div class="entry"><img src="./img/cropped/Master in the Fall, 2019.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></div>
+  <div class="entry"><img src="./img/cropped/Mushroom Captivity, 2018.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></div>
+  <div class="entry"><img src="./img/cropped/Passage Through Life, 2018.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></div>
+  <div class="entry"><img src="./img/cropped/Raintrade, 2019.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></div>
+  <div class="entry"><img src="./img/cropped/Shipwreck, 2019.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></div>
+  <div class="entry"><img src="./img/cropped/Silk Lion, 2018.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></div>
+  <div class="entry"><img src="./img/cropped/Winter Holding Center, 2018.jpg" class="lazy"><br><br><i>Calun</i>, 2018<br>Medium<br>Dimensions &times; dimensions</span><br><br><a class="sans" onclick="openInquiryForm()">Inquire</a></div>
+</div>
+</div>
+
+<div id="inquiry-form-container">
+  <div id="inquiry-form">
+    <center><h1>Inquiry</h1></center><br><Br>
+      <span class="inquiry-work-details"><i>Title of given work</i>, 2019<Br>Medium<br>Dimensions &times; dimensions<br><br></span>
+        <textarea></textarea><br><br>
+        <div style="text-align:right;">
+        <a class="sans" onclick="closeInquiryForm()">Cancel</span>&emsp;&emsp;
+        <a class="sans">Submit</a></span>
+      </div>
+  </div>
+</div>
+
+<div id="modal-frame">
+  <img class="modal-content" id="modal-image">
+</div>
+
+</div>
+</div>
+
+
+<script src="./js/scroll-converter.js" async></script>
+<script src="./js/main.js" async></script>
+
+</body>
+
+
+</html>
