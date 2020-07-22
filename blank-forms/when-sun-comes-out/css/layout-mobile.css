@@ -22,8 +22,15 @@
   }
 
   .grid #artists {
-    grid-column: 2 / -1;
+    font-size: 1.5rem;
+    grid-column: 1 / -1;
     columns: 1;
+    padding-bottom:8rem;
+  }
+
+  .grid #intro {
+    font-size:1.25rem;
+    columns:1;
     padding-bottom:8rem;
   }
 
