@@ -1,7 +1,7 @@
 /* Document */
 
 body {
-    font-family: 'Times', 'Times New Roman', sans-serif;
+    font-family: 'Times', 'Times New Roman', serif;
     line-height:25px;
     margin:0;
     padding: 20px;
@@ -291,7 +291,7 @@ iframe {
 }
 
 .menu {
-	font-family: serif;
+	    font-family: 'Times', 'Times New Roman', serif;
 	font-size: 36px;
     line-height: 44px;
 }
@@ -303,7 +303,7 @@ iframe {
 }
 
 .title {
-    font-family: serif;
+    font-family: 'Times', 'Times New Roman', serif;
     font-size: 39px;
     line-height: 47px;
 }
